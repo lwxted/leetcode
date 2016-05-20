@@ -5,7 +5,11 @@ class Solution(object):
     :rtype: int
     """
     ma = 0
-    for i in xrange(0, len(height)):
-      for j in xrange(i + 1, len(height)):
-        ma = max(ma, (j - i) * min(height[i], height[j]))
+    i, j = 0, len(height) - 1
+    while i < j:
+      ma = max(ma, (j - i) * min(height[i], height[j]))
+      if height[i] < height[j]:
+        i += 1
+      else:
+        j -= 1
     return ma
